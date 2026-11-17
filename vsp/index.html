@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> vsp </title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <section class="login-screen" id="login-screen">
+        <h1>Log in to VSP</h1>
+        <p>Local demo: enter a username to continue.</p>
+        <form id="login-form">
+            <label for="login-username">Username</label>
+            <input type="text" id="login-username" maxlength="32" autocomplete="username" required>
+            <button type="submit">Continue</button>
+        </form>
+        <p id="login-status" role="status"></p>
+    </section>
+
+    <div id="app" hidden>
+        <nav class="flex-div top-nav">
+            <div class="nav-left">
+                <div class="brand">VSP</div>
+            </div>
+            <div class="nav-middle">
+                <input type="search" class="search-bar" id="searchbar" placeholder="Search video" aria-label="Search videos">
+                <button type="button" class="send" id="send-btn" aria-label="Search saved videos">&#128269;</button>
+            </div>
+            <div class="nav-right">
+                <span id="current-user-label"></span>
+                <button type="button" id="switch-user-btn">Switch user</button>
+                <button type="button" id="create-btn">+ Create</button>
+                <input type="file" id="video-upload" accept="video/mp4,.mp4" multiple hidden>
+            </div>
+        </nav>
+
+        <main class="video-preview">
+            <p id="upload-status" aria-live="polite">Select MP4 videos to save them locally.</p>
+            <div class="upload-options">
+                <label for="channel-name">Channel username</label>
+                <input type="search" id="channel-name" maxlength="32" placeholder="Your channel name" aria-label="Channel username">
+                <label for="upload-category">Category</label>
+                <select id="upload-category">
+                    <option value="all">All</option>
+                    <option value="music">Music</option>
+                </select>
+            </div>
+            <section aria-label="Saved videos">
+                <div id="saved-video-list" class="saved-video-list"></div>
+            </section>
+            <section class="notifications" aria-labelledby="notifications-heading">
+                <h2 id="notifications-heading">Notifications</h2>
+                <p id="notification-toast" role="status" aria-live="polite" hidden></p>
+                <ul id="notification-list"></ul>
+            </section>
+        </main>
+
+        <nav class="bottom-nav" aria-label="Video categories">
+            <button type="button" data-category="all" aria-pressed="true">Home</button>
+            <button type="button" data-category="all" aria-pressed="false">All</button>
+            <button type="button" data-category="music" aria-pressed="false">Music</button>
+        </nav>
+    </div>
+</body>
